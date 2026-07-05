@@ -39,37 +39,6 @@ Keterangan blok: **R** = *de-ringing*, **NS** = *denoising* + koreksi *rotation-
 
 ---
 
-## Hasil Utama
-
-**TA 1 — Denoising (Mount Simon)**
-
-| Model | Porositas | Galat relatif | Waktu denoising |
-|-------|:---------:|:-------------:|:---------------:|
-| **2D U-Net** | 18.06 % | 3.02 % | ~2.75 s |
-| 3D U-Net | — | — | ~19.83 s |
-
-2D U-Net memberikan akurasi porositas kompetitif dengan waktu inferensi ~7×
-lebih cepat dibanding 3D U-Net.
-
-**TA 2 — Perbandingan Skema**
-
-- **K1** unggul pada seluruh metrik restorasi (keunggulan PSNR **0.12–0.45 dB**
-  atas K2).
-- **K2** melatih **~2.5× lebih cepat** dengan kualitas restorasi setara.
-- **K3** gagal pada sampel karbonat *out-of-distribution* (PTP): artefak *ring*
-  bocor ke prediksi, *over-smoothing* menurunkan SSA sehingga permeabilitas
-  Kozeny-Carman menjadi *inflated* (galat porositas *over-segmentation* ~+33.2 %).
-
-> **Catatan.** Kegagalan K3 pada PTP adalah bukti empiris yang diharapkan: ia
-> menunjukkan mengapa pemisahan tahap *de-ringing* diperlukan. Artefak *ring*
-> berasal dari detektor dan bersifat global, sehingga *receptive field* terbatas
-> pada K3 tidak dapat menangkapnya.
-
-Metrik yang dilaporkan — restorasi: PSNR, SSIM, RMSE · segmentasi: Dice, IoU,
-akurasi · petrofisika: porositas, SSA, permeabilitas Kozeny-Carman.
-
----
-
 ## Struktur Repositori
 
 ```
