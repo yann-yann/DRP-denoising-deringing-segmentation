@@ -89,66 +89,11 @@ akurasi · petrofisika: porositas, SSA, permeabilitas Kozeny-Carman.
 │   └── segmentation/         # Blok B — segmentasi pori 2.5D
 │       ├── resunet_segmentation_colab_2p5D.ipynb
 │       └── resunet_segmentation_inference_colab.ipynb
-├── src/
-│   └── red_cnn_optimized2.py # implementasi RED-CNN (Chen et al. 2017)
-├── docs/
-│   └── architecture.md       # detail arsitektur & blok
 ├── requirements.txt
-└── .gitignore
 ```
-
----
-
-## Menjalankan di Google Colab
-
-Seluruh notebook dirancang untuk **Google Colab** (dengan akselerasi GPU).
-Klik badge untuk membuka langsung:
-
-| Notebook | Colab |
-|----------|:-----:|
-| 2D U-Net (TA 1) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/USERNAME/REPO/blob/main/notebooks/TA1_preliminary/2D_U_Net_Complete.ipynb) |
-| 3D U-Net (TA 1) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/USERNAME/REPO/blob/main/notebooks/TA1_preliminary/3D_U_Net_Complete.ipynb) |
-| K1 — Blok R | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/USERNAME/REPO/blob/main/notebooks/K1_cascade/K1_blokR_ResUNet2D.ipynb) |
-| K1 — Blok NS | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/USERNAME/REPO/blob/main/notebooks/K1_cascade/K1_blokNS_ResUNet2D.ipynb) |
-| K1 — Inferensi cascade | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/USERNAME/REPO/blob/main/notebooks/K1_cascade/K1_cascade_inference_ResUNet2D.ipynb) |
-| K2 — Inferensi end-to-end | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/USERNAME/REPO/blob/main/notebooks/K2_partial/K2_endtoend_inference_ResUNet2D.ipynb) |
-| K3 — Segmentasi pori v2 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/USERNAME/REPO/blob/main/notebooks/K3_monolithic/ResidualUNet_PoreSegmentation_v2.ipynb) |
-| Blok B — Segmentasi 2.5D | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/USERNAME/REPO/blob/main/notebooks/segmentation/resunet_segmentation_colab_2p5D.ipynb) |
-| Blok B — Inferensi segmentasi | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/USERNAME/REPO/blob/main/notebooks/segmentation/resunet_segmentation_inference_colab.ipynb) |
-
-Menjalankan secara lokal:
-
-```bash
-git clone https://github.com/USERNAME/REPO.git
-cd REPO
-pip install -r requirements.txt
-jupyter lab
-```
-
-> Modul `google.colab` hanya tersedia di Colab; hapus/lewati sel *mount* Drive
-> saat menjalankan secara lokal.
-
----
-
-## Data & Bobot Model
-
-Volume micro-CT dan *checkpoint* model **tidak** disertakan dalam git (lihat
-`.gitignore`) karena ukuran besar dan batas 100 MB/berkas GitHub. Data & bobot
-disimpan terpisah:
-
-- **Data mentah / GT:** Google Drive *(tambahkan tautan Anda di sini)*
-- **Checkpoint model:** Google Drive *(tambahkan tautan Anda di sini)*
-
-> Untuk arsip permanen yang dapat disitasi (mis. saat submisi), pertimbangkan
-> [Zenodo](https://zenodo.org/) atau [Hugging Face](https://huggingface.co/)
-> untuk mendapatkan DOI.
-
----
 
 ## Arsitektur
-
-- **RED-CNN** (Chen et al. 2017) — dasar untuk Blok R (*de-ringing*).
-- **Residual U-Net 2D** (8.28 M parameter) — Blok NS (*denoising*).
+- **Residual U-Net 2D** (8.28 M parameter) — dasar untuk Blok R (*de-ringing*) dan Blok NS (*denoising*).
 - **Residual U-Net 2.5D** (input 5-kanal, keluaran 2-kelas *softmax*) — Blok B
   dan skema K3.
 
@@ -203,27 +148,3 @@ Referensi utama yang mendasari arsitektur dan metodologi repositori ini:
   archivePrefix = {arXiv}
 }
 ```
-
-</details>
-
----
-
-## Sitasi
-
-Jika repositori ini bermanfaat, silakan sitasi Tugas Akhir terkait
-*(lengkapi setelah publikasi)*:
-
-```bibtex
-@thesis{yan_digitalrock,
-  title  = {Perbandingan Skema Pipeline Restorasi dan Segmentasi Pori
-            Citra Micro-CT Batuan dengan Residual U-Net},
-  author = {<Nama Lengkap>},
-  year   = {2026},
-  school = {<Institusi>},
-  type   = {Tugas Akhir}
-}
-```
-
-## Lisensi
-
-Dirilis di bawah [Lisensi MIT](LICENSE).
