@@ -1,0 +1,32 @@
+# Deep learning
+torch>=2.0.0
+torchvision>=0.15.0
+
+# Scientific computing
+numpy>=1.24.0
+scipy>=1.10.0
+pandas>=2.0.0
+
+# Image I/O and processing
+tifffile>=2023.7.10
+scikit-image>=0.21.0
+opencv-python>=4.8.0
+
+# Machine learning utilities
+scikit-learn>=1.3.0
+
+# Visualization
+matplotlib>=3.7.0
+
+# Progress bars
+tqdm>=4.65.0
+
+# System / GPU monitoring
+psutil>=5.9.0
+GPUtil>=1.4.0
+nvidia-ml-py>=12.535.0
+
+# NOTE: The notebooks are designed to run on Google Colab, where torch,
+# numpy, matplotlib, scipy, scikit-image, scikit-learn, pandas and tqdm
+# are pre-installed. The `google.colab` module is Colab-only and is not
+# needed when running locally.
